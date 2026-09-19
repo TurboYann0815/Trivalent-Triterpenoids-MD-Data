@@ -1,0 +1,10 @@
+*.xtc
+*.trr
+*.cpt
+*.edr
+*.tar.gz
+*.part_*
+*.bak
+#*
+6vxx/spike_20c.pdb
+3LZG/md_center.pdb

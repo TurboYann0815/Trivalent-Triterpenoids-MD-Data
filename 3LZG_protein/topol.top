@@ -1,0 +1,57 @@
+;
+;	File 'topol.top' was generated
+;	By user: wangmengyang (1001)
+;	On host: lthpc
+;	At date: Thu Dec  4 09:23:07 2025
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	                    :-) GROMACS - gmx pdb2gmx, 2024.3 (-:
+;	
+;	Executable:   /data/workspace/wangmengyang/gromacs/bin/gmx
+;	Data prefix:  /data/workspace/wangmengyang/gromacs
+;	Working dir:  /data/workspace/wangmengyang/3LZG_protein
+;	Command line:
+;	  gmx pdb2gmx -f 3LZG_protein.pdb -o protein.gro -water spc -ignh
+;	Force field was read from the standard GROMACS share directory.
+;
+
+; Include forcefield parameters
+#include "amber99sb.ff/forcefield.itp"
+
+; Include chain topologies
+#include "topol_Protein_chain_A.itp"
+#include "topol_Protein_chain_B.itp"
+#include "topol_Protein_chain_C.itp"
+#include "topol_Protein_chain_D.itp"
+#include "topol_Protein_chain_E.itp"
+#include "topol_Protein_chain_F.itp"
+
+; Include water topology
+#include "amber99sb.ff/spc.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amber99sb.ff/ions.itp"
+
+[ system ]
+; Name
+2 HEMAGGLUTININ in water
+
+[ molecules ]
+; Compound        #mols
+Protein_chain_A     1
+Protein_chain_B     1
+Protein_chain_C     1
+Protein_chain_D     1
+Protein_chain_E     1
+Protein_chain_F     1
+SOL         90105
+NA               11

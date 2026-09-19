@@ -1,0 +1,77 @@
+;
+;	File 'topol.top' was generated
+;	By user: wangmengyang (1001)
+;	On host: lthpc
+;	At date: Tue Dec 16 16:17:01 2025
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	              :-) GROMACS - gmx pdb2gmx, 2024.3-conda_forge (-:
+;	
+;	Executable:   /home/wangmengyang/miniconda3/envs/MMPBSA/bin.AVX2_256/gmx
+;	Data prefix:  /home/wangmengyang/miniconda3/envs/MMPBSA
+;	Working dir:  /data/workspace/wangmengyang/6vxx
+;	Command line:
+;	  gmx pdb2gmx -f 6vxx_protein.pdb -o protein.gro -water spc -ignh
+;	Force field was read from the standard GROMACS share directory.
+;
+
+; Include forcefield parameters
+#include "amber99sb.ff/forcefield.itp"
+
+[ atomtypes ]
+;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb
+ c3       c3          0.00000  0.00000   A     3.39967e-01   4.57730e-01 ; 1.91  0.1094
+ oh       oh          0.00000  0.00000   A     3.06647e-01   8.80314e-01 ; 1.72  0.2104
+ n        n           0.00000  0.00000   A     3.25000e-01   7.11280e-01 ; 1.82  0.1700
+ o        o           0.00000  0.00000   A     2.95992e-01   8.78640e-01 ; 1.66  0.2100
+ c2       c2          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860
+ c        c           0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860
+ os       os          0.00000  0.00000   A     3.00001e-01   7.11280e-01 ; 1.68  0.1700
+ na       na          0.00000  0.00000   A     3.25000e-01   7.11280e-01 ; 1.82  0.1700
+ nc       nc          0.00000  0.00000   A     3.25000e-01   7.11280e-01 ; 1.82  0.1700
+ nd       nd          0.00000  0.00000   A     3.25000e-01   7.11280e-01 ; 1.82  0.1700
+ cc       cc          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860
+ cd       cd          0.00000  0.00000   A     3.39967e-01   3.59824e-01 ; 1.91  0.0860
+ n3       n3          0.00000  0.00000   A     3.25000e-01   7.11280e-01 ; 1.82  0.1700
+ hc       hc          0.00000  0.00000   A     2.64953e-01   6.56888e-02 ; 1.49  0.0157
+ h1       h1          0.00000  0.00000   A     2.47135e-01   6.56888e-02 ; 1.39  0.0157
+ ha       ha          0.00000  0.00000   A     2.59964e-01   6.27600e-02 ; 1.46  0.0150
+ ho       ho          0.00000  0.00000   A     0.00000e+00   0.00000e+00 ; 0.00  0.0000
+ hn       hn          0.00000  0.00000   A     1.06908e-01   6.56888e-02 ; 0.60  0.0157
+ h4       h4          0.00000  0.00000   A     2.51055e-01   6.27600e-02 ; 1.41  0.0150
+
+; Include chain topologies
+#include "topol_Protein_chain_A.itp"
+#include "topol_Protein_chain_B.itp"
+#include "topol_Protein_chain_C.itp"
+
+; Include ligand topology
+#include "UNK.itp"
+
+; Include water topology
+#include "amber99sb.ff/spc.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amber99sb.ff/ions.itp"
+
+[ system ]
+; Name
+SWISS-MODEL SERVER (https://swissmodel.expasy.org) 6vxx in water
+
+[ molecules ]
+; Compound        #mols
+Protein_chain_A     1
+Protein_chain_B     1
+Protein_chain_C     1
+UNK                 1
+SOL         125386
+NA               12
